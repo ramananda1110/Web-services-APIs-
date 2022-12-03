@@ -25,6 +25,7 @@ fun Application.configureRouting() {
             val book = Book(bookId!!, " apples", "Mr. appleton")
             val hypermediaLink = listOf<HypermediaLink>(
                 HypermediaLink("http://localhost:8080/library/book/$bookId/checkout", "checkout", "GET"),
+                HypermediaLink("http://localhost:8080/library/book/$bookId/reserve", "reserve", "GET"),
                 HypermediaLink("http://localhost:8080/library/book/$bookId/reserve", "reserve", "GET")
             )
 
