@@ -8,7 +8,7 @@ fun Application.configureRouting() {
 
     routing {
         get("/") {
-            call.respondText("Hello World!")
+            call.respondText("this test APIs!")
         }
 
         get("/library/book/{bookid}/checkout") {
