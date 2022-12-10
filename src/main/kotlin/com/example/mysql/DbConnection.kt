@@ -4,11 +4,16 @@ import org.ktorm.database.Database
 
 object DbConnection {
 
-    private val db:Database?=null
+    private val db: Database? = null
 
-    fun getDatabaseInstance() :Database{
+    fun getDatabaseInstance(): Database {
 
-        return db ?: Database.Companion.connect(url = "jdbc:mysql://localhost:3306", driver = "com.mysql.cj.jdbc.Driver", user="root", password = "")
+        return db ?: Database.Companion.connect(
+            url = "jdbc:mysql://localhost:3306/note_app",
+            driver = "com.mysql.cj.jdbc.Driver",
+            user = "root",
+            password = ""
+        )
 
     }
 }
