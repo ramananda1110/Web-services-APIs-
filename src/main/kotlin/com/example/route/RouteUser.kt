@@ -23,7 +23,17 @@ fun Application.routeUser() {
         }
 
         post("/register") {
-            val user: User = call.receive()
+
+           /* print(call.request.queryParameters)
+
+            val formParameters = call.receiveParameters() // query params
+            val username = formParameters["username"].toString()
+           */
+            val user:User = call.receive() // json format
+
+            println("---------not working------------")
+
+            println(user.firstName)
 
             val noOrRowsAffected = db.insert(EntityUser) {
                 set(it.firstname, user.firstName)
@@ -40,7 +50,9 @@ fun Application.routeUser() {
                 )
 
             } else {
+                print("not working")
                 call.respond(
+
                     HttpStatusCode.BadRequest,
                     GenericResponse(isSuccess = false, data = "Data not insert")
                 )
