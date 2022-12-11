@@ -24,37 +24,49 @@ fun Application.routeUser() {
 
         post("/register") {
 
-           /* print(call.request.queryParameters)
+            /* print(call.request.queryParameters)
 
-            val formParameters = call.receiveParameters() // query params
-            val username = formParameters["username"].toString()
-           */
-            val user:User = call.receive() // json format
+             val formParameters = call.receiveParameters() // query params
+             val username = formParameters["username"].toString()
+            */
+            val user: User = call.receive() // json format
 
             println("---------not working------------")
 
             println(user.firstName)
 
+
+            /* if (user.dob == null) {
+                 println("please enter user dob")
+                 return@post
+             }*/
+
             val noOrRowsAffected = db.insert(EntityUser) {
-                set(it.firstname, user.firstName)
-                set(it.lastname, user.lastName)
-                set(it.dob, user.dob)
-                set(it.gender, user.gender)
+                set(it.firstname, user.firstName ?: "")
+                set(it.lastname, user.lastName ?: "")
+                set(it.dob, user.dob ?: "")
+                set(it.gender, user.gender ?: "")
             }
 
             if (noOrRowsAffected > 0) {
                 // success
                 call.respond(
                     HttpStatusCode.OK,
-                    GenericResponse(isSuccess = true, data = "$noOrRowsAffected rows are effected")
+                    GenericResponse(
+                        message = "Record added successfully",
+                        statusCode = HttpStatusCode.OK.hashCode(),
+                        data = user
+                    )
                 )
 
             } else {
-                print("not working")
                 call.respond(
-
-                    HttpStatusCode.BadRequest,
-                    GenericResponse(isSuccess = false, data = "Data not insert")
+                    HttpStatusCode.OK,
+                    GenericResponse(
+                        message = "Record not added",
+                        statusCode = HttpStatusCode.OK.hashCode(),
+                        data = null
+                    )
                 )
 
             }
