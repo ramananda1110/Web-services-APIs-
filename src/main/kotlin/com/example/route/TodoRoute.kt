@@ -35,7 +35,8 @@ fun Application.todoRoute() {
                 return@get
             }
 
-           val todo = call.respond(repository.getToDo(id))
+           val todo = repository.getToDo(id)
+
         }
 
         post("/todos") {
