@@ -5,3 +5,9 @@ data class ToDo(
     var title: String,
     var done: Boolean
 )
+
+
+data class ToDoDraft(
+    val title: String,
+    var done: Boolean
+)
