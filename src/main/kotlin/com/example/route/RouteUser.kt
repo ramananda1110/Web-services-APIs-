@@ -1,6 +1,6 @@
 package com.example.route
 
-import com.example.mysql.DbConnection
+import com.example.mysql.db.DbConnection
 import com.example.mysql.entity.EntityUser
 import com.example.mysql.model.User
 import com.example.utils.GenericResponse

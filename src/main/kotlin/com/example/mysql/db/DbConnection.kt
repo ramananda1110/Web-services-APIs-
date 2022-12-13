@@ -1,4 +1,4 @@
-package com.example.mysql
+package com.example.mysql.db
 
 import org.ktorm.database.Database
 

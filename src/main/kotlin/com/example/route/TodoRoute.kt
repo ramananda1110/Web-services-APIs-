@@ -1,6 +1,6 @@
 package com.example.route
 
-import com.example.mysql.DbConnection
+import com.example.mysql.db.DbConnection
 import com.example.mysql.entity.ToDoDraft
 import com.example.mysql.repository.InMemoryToDoRepository
 import com.example.mysql.repository.ToDoRepository
