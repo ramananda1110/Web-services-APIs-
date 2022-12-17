@@ -1,26 +1,30 @@
 package com.example.mysql.repository
 
+import com.example.mysql.db.DatabaseManager
 import com.example.mysql.entity.ToDo
 import com.example.mysql.entity.ToDoDraft
 
 class MySqlTodoRepository : ToDoRepository {
+
+    private val database = DatabaseManager()
+
     override fun getAllToDos(): List<ToDo> {
-        TODO("Not yet implemented")
+        return database.getAllTodos().map { ToDo(it.id, it.title, it.done) }
     }
 
     override fun getToDo(id: Int): ToDo? {
-        TODO("Not yet implemented")
+        return database.getToDo(id)?.let { ToDo(it.id, it.title, it.done) }
     }
 
     override fun addToDo(draft: ToDoDraft): ToDo {
-        TODO("Not yet implemented")
+        return database.addToDo(draft)
     }
 
-    override fun removeTodo(int: Int): Boolean {
-        TODO("Not yet implemented")
+    override fun removeTodo(id: Int): Boolean {
+        return database.removeTodo(id)
     }
 
     override fun updateToDo(id: Int, draft: ToDoDraft): Boolean {
-        TODO("Not yet implemented")
+        return database.updateToDo(id, draft)
     }
 }

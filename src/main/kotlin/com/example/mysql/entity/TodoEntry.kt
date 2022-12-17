@@ -8,7 +8,7 @@ import org.ktorm.schema.varchar
 
 
 object TodoEntry : Table<DBTodoEntity>(tableName = "note_user") {
-    val userid = int(name = "id").primaryKey().bindTo { it.id }
+    val id = int(name = "id").primaryKey().bindTo { it.id }
     val title = varchar(name = "title").bindTo { it.title }
     val done = boolean(name = "done").bindTo { it.done }
 

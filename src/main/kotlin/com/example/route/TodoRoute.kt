@@ -3,6 +3,7 @@ package com.example.route
 import com.example.mysql.db.DbConnection
 import com.example.mysql.entity.ToDoDraft
 import com.example.mysql.repository.InMemoryToDoRepository
+import com.example.mysql.repository.MySqlTodoRepository
 import com.example.mysql.repository.ToDoRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -16,7 +17,8 @@ fun Application.todoRoute() {
 
     val db: Database = DbConnection.getDatabaseInstance()
 
-    val repository: ToDoRepository = InMemoryToDoRepository()
+//    val repository: ToDoRepository = InMemoryToDoRepository()
+    val repository: ToDoRepository = MySqlTodoRepository()
 
 
     routing {
